@@ -5,10 +5,10 @@ export const Filter = ({ value, onChange }) => {
   const inputFilterId = nanoid();
 
   return (
-    <label htmlFor={inputFilterId}>
-      Find contact by name
-      <br />
+    <label className={css.filter} htmlFor={inputFilterId}>
+      <span className={css.filter_text}>Find contact by name</span>
       <input
+        className={css.filter_input}
         type="text"
         name="filter"
         value={value}

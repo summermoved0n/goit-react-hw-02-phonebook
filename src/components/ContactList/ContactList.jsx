@@ -1,11 +1,17 @@
 import { ContactListItem } from 'components/ContactListItems/ContactListItem';
 import css from './ContactList.module.css';
 
-export const ContactList = ({ contacts }) => {
+export const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <ul>
+    <ul className={css.list}>
       {contacts.map(({ id, name, number }) => (
-        <ContactListItem key={id} id={id} name={name} number={number} />
+        <ContactListItem
+          key={id}
+          id={id}
+          name={name}
+          number={number}
+          deleteContact={deleteContact}
+        />
       ))}
     </ul>
   );
