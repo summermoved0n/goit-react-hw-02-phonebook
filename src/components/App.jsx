@@ -21,22 +21,24 @@ export class App extends Component {
     const { contacts } = this.state;
     const { name, number } = data;
 
-    const getName = contacts.find(contact => contact.name === name);
+    const getName = contacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
 
     if (getName) {
       alert(`${name} is already in contacts`);
-    } else {
-      const contact = {
-        id: nanoid(),
-        name,
-        number,
-      };
-      console.log(contact);
-
-      this.setState(prevState => ({
-        contacts: [contact, ...prevState.contacts],
-      }));
+      return;
     }
+    const contact = {
+      id: nanoid(),
+      name,
+      number,
+    };
+    console.log(contact);
+
+    this.setState(prevState => ({
+      contacts: [contact, ...prevState.contacts],
+    }));
   };
 
   deleteContact = id => {
